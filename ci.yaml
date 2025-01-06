@@ -1,0 +1,23 @@
+name: CI
+
+on:
+  workflow_dispatch: {}
+
+  push:
+    branches:
+      - main
+      - "release/*"
+      - "develop/*"
+      - "features/*"
+      - "hotfixes/*"
+    tags:
+      - "v*.*.*"
+      - "v*.*.*-rc*"
+    paths:
+      - functions/**
+
+  pull_request:
+    branches:
+      - main
+    paths:
+      - functions/**
