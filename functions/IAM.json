@@ -5,7 +5,6 @@
             "Effect": "Allow",
             "Action": [
                 "ecs:CreateCluster",
-                "ecs:RegisterTaskDefinition",
                 "ec2:CreateVpc",
                 "ec2:DescribeVpcs",
                 "ec2:DescribeSubnets",
