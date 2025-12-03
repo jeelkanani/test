@@ -111,4 +111,3 @@ jobs:
           # Add your actual build commands here
           # For example:
           # npm install
-          # npm run build:$ENV
