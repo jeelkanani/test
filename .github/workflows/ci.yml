@@ -138,9 +138,3 @@ jobs:
     steps:
       - name: Print release environment ${{ needs.get-environment.outputs.result }}
         run: echo "Releasing for environment"
-
-      - name: Do release
-        run: |
-          ENV="${{ needs.get-environment.outputs.result }}"
-          echo "Running release steps for $ENV"
-          # Add your actual deploy/release steps here
