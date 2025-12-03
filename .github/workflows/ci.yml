@@ -119,12 +119,21 @@ jobs:
           echo "Running build commands for $ENV"
           # Add your actual build commands here
           # For example:
-          # npm install
+          # npm instal
           
+  skip:
+    name: Skip ${{ needs.get-environment.outputs.result }}
+    runs-on: ubuntu-latest
+    needs: ["get-environment","build"]
+    if: ${{ github.event_name != 'pull_request' && needs.get-environment.outputs.result == 'production' }}
+    steps:
+      - name: Print release environment ${{ needs.get-environment.outputs.result }}
+        run: echo "Releasing for environment"
+      
   release:
     name: Release ${{ needs.get-environment.outputs.result }}
     runs-on: ubuntu-latest
-    needs: ["get-environment","build"]
+    needs: ["get-environment","build", "skip"]
     if: ${{ github.event_name != 'pull_request' &&((needs.get-environment.outputs.result == 'production' && needs.check-deployment-approval.result == 'success') ||(needs.get-environment.outputs.result != 'production'))}}
     steps:
       - name: Print release environment ${{ needs.get-environment.outputs.result }}
