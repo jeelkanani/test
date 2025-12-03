@@ -88,7 +88,7 @@ jobs:
       - name: Generate env
         id: generate_env
         run: |
-          echo '${{ toJSON(vars) }}' '${{ toJSON(env) }}' | jq -r 'with_entries(select(.key | test("CI_") | not)) | to_entries[] | "\(.key)=\(.value)"' > "${{ env.envFile }}"
+          echo '${{ toJSON(vars) }}' | jq -r 'with_entries(select(.key | test("CI_") | not)) | to_entries[] | "\(.key)=\(.value)"' > "${{ env.envFile }}"
 
           echo '::group::application environment variables:'
           cat ${{ env.envFile }}
