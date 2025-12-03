@@ -134,7 +134,7 @@ jobs:
     name: Release ${{ needs.get-environment.outputs.result }}
     runs-on: ubuntu-latest
     needs: ["get-environment","build", "skip"]
-    if: ${{ github.event_name != 'pull_request' &&((needs.get-environment.outputs.result == 'production' && needs.skip.result == 'success') || (needs.get-environment.outputs.result != 'production' && needs.skip.result == 'skipped'))}}
+    if: ${{ github.event_name != 'pull_request'}}
     steps:
       - name: Print release environment ${{ needs.get-environment.outputs.result }}
         run: echo "Releasing for environment"
