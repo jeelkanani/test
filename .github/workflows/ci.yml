@@ -1,4 +1,4 @@
-name: CI-test
+name: CI
 
 permissions:
   id-token: write
@@ -48,7 +48,7 @@ on:
       - README.md
 
 env:
-  IS_DEV: ${{ (inputs.dry-run && inputs.environment == 'development') || (!inputs.dry-run && ((github.event_name == 'pull_request' && startsWith(github.base_ref, 'develop')) || (github.event_name != 'pull_request' && github.ref_type == 'branch' && startsWith(github.ref_name, 'develop')))) }}
+  IS_DEV: ${{ (inputs.dry-run && inputs.environment == 'development') ||(!inputs.dry-run && ((github.event_name == 'pull_request' && startsWith(github.base_ref, 'develop')) ||(github.event_name == 'push' && github.ref_type == 'branch' && startsWith(github.ref_name, 'develop')))) }}
   IS_STAGING: ${{ (inputs.dry-run && inputs.environment == 'staging') || (!inputs.dry-run && ((github.event_name == 'pull_request' && startsWith(github.base_ref, 'release')) || (github.event_name != 'pull_request' && github.ref_type == 'branch' && startsWith(github.ref_name, 'release')))) }}
   IS_PROD: ${{ (inputs.dry-run && inputs.environment == 'production') || (!inputs.dry-run && ((github.event_name == 'pull_request' && github.base_ref == 'main') || (github.ref_type == 'tag' && !contains(github.ref_name, '-rc') && !contains(github.ref_name, '-qa')))) }}
   envFile: ./.env
@@ -101,8 +101,8 @@ jobs:
             echo "No environment file found"
           fi
 
-      - name: Print selected environment ${{needs.get-environment.outputs.result }}
-        run: echo "Building for environment"
+      - name: Print selected environment
+        run: echo "Building for environment: ${{ needs.get-environment.outputs.result }}"
 
       - name: Build project
         run: |
@@ -112,5 +112,3 @@ jobs:
           # For example:
           # npm install
           # npm run build:$ENV
-          
-          
