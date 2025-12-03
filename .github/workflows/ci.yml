@@ -61,7 +61,7 @@ jobs:
         run: |
           obj=$(echo '{}' | jq -r '
             if env.IS_DEV == "true" then {
-              result: "development"
+              result: "dev"
             } elif env.IS_STAGING == "true" then {
               result: "staging"
             } elif env.IS_PROD == "true" then {
@@ -84,6 +84,7 @@ jobs:
     name: Build ${{ needs.get-environment.outputs.result }}
     runs-on: ubuntu-latest
     needs: get-environment
+    environment: dev
     steps:
       - name: Generate env
         id: generate_env
