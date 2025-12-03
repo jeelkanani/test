@@ -101,8 +101,8 @@ jobs:
             echo "No environment file found"
           fi
 
-      - name: Print selected environment
-        run: echo "Building for environment: ${{ needs.get-environment.outputs.result }}"
+      - name: Print selected environment  ${{ needs.get-environment.outputs.result }}
+        run: echo "Building for environment"
 
       - name: Build project
         run: |
