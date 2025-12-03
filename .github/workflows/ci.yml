@@ -28,9 +28,7 @@ on:
       - "develop/*"
       - "release/*"
       - main
-    paths-ignore:
-      - .azure-pipelines/**
-      - .github/**
+    paths:
       - README.md
 
   pull_request:
