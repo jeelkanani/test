@@ -120,3 +120,18 @@ jobs:
           # Add your actual build commands here
           # For example:
           # npm install
+          
+  release:
+    name: Release ${{ needs.get-environment.outputs.result }}
+    runs-on: ubuntu-latest
+    needs: build
+    if: ${{ github.event_name != 'pull_request' &&((needs.get-environment.outputs.result == 'production' && needs.check-deployment-approval.result == 'success') ||(needs.get-environment.outputs.result != 'production'))}}
+    steps:
+      - name: Print release environment ${{ needs.get-environment.outputs.result }}
+        run: echo "Releasing for environment"
+
+      - name: Do release
+        run: |
+          ENV="${{ needs.get-environment.outputs.result }}"
+          echo "Running release steps for $ENV"
+          # Add your actual deploy/release steps here
