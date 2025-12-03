@@ -7,7 +7,7 @@
                 "ecs:CreatCluster",
                 "ec2:CreateVpc",
                 "ec2:DecribeVpcs",
-                "ec:escribeSubnet
+                "ec:escribeSunet
                 "ec2:CreateSecurityGroup",
                 "ec2:DescribSecuritGroups"
             ],
@@ -16,6 +16,7 @@
     ]
     
 }
+
 
 
 
