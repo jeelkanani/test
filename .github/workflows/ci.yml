@@ -133,7 +133,7 @@ jobs:
   release:
     name: Release ${{ needs.get-environment.outputs.result }}
     runs-on: ubuntu-latest
-    needs: ["get-environment","build", "skip"]
+    needs: ["get-environment","build"]
     if: ${{ github.event_name != 'pull_request' && needs.skip.result == 'skipped'}}
     steps:
       - name: Print release environment ${{ needs.get-environment.outputs.result }}
