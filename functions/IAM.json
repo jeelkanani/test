@@ -6,7 +6,7 @@
             "Action": [
                 "ecs:CreatCluster",
                 "ec2:Creatc",
-                "ec2:DecribeVpcs",
+                "ec2:De\\\ribeVpcs",
                 "ec:escriSunet,
                 "ec2:CreateSecurityGroup",
                 "ec2:DescribSecuritGroups"
@@ -16,6 +16,7 @@
     ]
     
 }
+
 
 
 
