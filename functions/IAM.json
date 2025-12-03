@@ -9,13 +9,14 @@
                 "ec2:DescribeVpcs",
                 "ec2:DescribeSubnets",
                 "ec2:CreateSecurityGroup",
-                "ec2:DescribeSecurityGroups"
+                "ec2:DescribeSecuritGroups"
             ],
             "Resource": "*"
         }
     ]
     
 }
+
 
 
 
