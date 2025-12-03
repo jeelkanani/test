@@ -40,10 +40,8 @@ on:
       - opened
       - synchronize
       - reopened
-    paths-ignore:
-      - .azure-pipelines/**
-      - .github/**
-      - README.md
+    paths:
+      - function/**
 
 env:
   IS_DEV: ${{ (inputs.dry-run && inputs.environment == 'development') || (!inputs.dry-run && ((github.event_name == 'pull_request' && startsWith(github.base_ref, 'develop')) || (github.event_name != 'pull_request' && github.ref_type == 'branch' && startsWith(github.ref_name, 'develop')))) }}
