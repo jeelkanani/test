@@ -27,7 +27,6 @@ on:
     branches:
       - "develop/*"
       - "release/*"
-      - master
     paths-ignore:
       - .azure-pipelines/**
       - .github/**
