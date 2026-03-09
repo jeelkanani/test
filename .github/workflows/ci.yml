@@ -100,15 +100,3 @@ jobs:
           else
             echo "No environment file found"
           fi
-
-      - name: Print selected environment
-        run: echo "Building for environment: ${{ needs.get-environment.outputs.result }}"
-
-      - name: Build project
-        run: |
-          ENV="${{ needs.get-environment.outputs.result }}"
-          echo "Running build commands for $ENV"
-          # Add your actual build commands here
-          # For example:
-          # npm install
-          # npm run build:$ENV
